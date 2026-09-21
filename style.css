@@ -1,0 +1,1960 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0f172a;
+    --bg-secondary: #111827;
+    --surface: #1e293b;
+    --surface-hover: #263449;
+
+    --header: #020617;
+
+    --border: #334155;
+    --border-light: #475569;
+
+    --text: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    --blue: #4da6ff;
+    --blue-dark: #2988df;
+    --blue-light: #1e3a5f;
+
+    --danger: #ef4444;
+    --danger-dark: #dc2626;
+    --danger-bg: #451a1a;
+
+    --success: #22c55e;
+    --success-bg: #143d25;
+
+    --warning: #f59e0b;
+    --warning-bg: #422d0a;
+
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    --shadow-large: 0 8px 25px rgba(0, 0, 0, 0.4);
+
+    --radius: 10px;
+    --radius-large: 12px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   HEADER / NAVIGATION
+========================================================= */
+
+header {
+    background-color: var(--header);
+    color: white;
+    padding: 20px 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Groups RRom brand and Home link on the left */
+.header-brand-group {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Space between RRom and Home */
+}
+
+.header-brand-group h1 {
+    font-size: 25px;
+}
+
+.home-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 25px;
+    transition: color 0.15s ease;
+}
+
+.home-link:hover {
+    color: var(--blue);
+}
+
+/* Groups Dropdown Menu and Logout on the right side-by-side */
+.header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between Menu dropdown and Logout button */
+}
+
+#logoutButton {
+    margin-left: 0;
+    background-color: var(--danger);
+    color: white;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#logoutButton:hover {
+    background-color: var(--danger-dark);
+}
+
+/* =========================================================
+   NAV DROPDOWN (FULL TEXT VISIBLE & CLEAN)
+========================================================= */
+
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-trigger {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.dropdown-trigger:hover,
+.nav-dropdown:hover .dropdown-trigger {
+    color: var(--blue);
+    background: transparent;
+    border: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;               /* Aligns cleanly to the right edge of the trigger */
+    top: 100%;
+    
+    /* Matches trigger width minimum, but expands smoothly to show full text */
+    min-width: 100%;
+    width: max-content;
+    
+    background-color: var(--header);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-large);
+    z-index: 1000;
+    
+    /* Keeps hover backgrounds inside the rounded corners */
+    overflow: hidden; 
+    box-sizing: border-box;
+}
+
+.dropdown-content#mainNav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+}
+
+.dropdown-content a {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;     /* Comfortable spacing inside each item */
+    font-size: 16px;
+    text-align: left;
+    color: white;
+    text-decoration: none;
+    box-sizing: border-box;
+    white-space: nowrap;    /* Prevents words from wrapping awkwardly */
+    
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--surface-hover);
+    color: var(--blue);
+}
+
+/* Show dropdown on hover */
+.nav-dropdown:hover .dropdown-content {
+    display: flex;
+}
+/* =========================================================
+   GENERAL BUTTONS
+========================================================= */
+
+button {
+    background-color: var(--surface);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    padding: 12px 25px;
+
+    border-radius: 6px;
+
+    font-size: 16px;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+button:hover {
+    background-color: var(--surface-hover);
+    border-color: var(--border-light);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+
+    background-color: #1769aa;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.hero button {
+    background-color: white;
+    color: #222;
+    border: none;
+}
+
+.hero button:hover {
+    background-color: #ddd;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 60px 20px;
+}
+
+.card {
+    background-color: var(--surface);
+
+    width: 280px;
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    text-align: center;
+
+    box-shadow: var(--shadow);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    text-align: center;
+
+    background-color: var(--header);
+    color: white;
+
+    padding: 20px;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.profile-header {
+    background-color: var(--surface);
+
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    box-shadow: var(--shadow);
+}
+
+.profile-picture {
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    background-color: var(--blue);
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40px;
+    font-weight: bold;
+
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h2 {
+    margin-bottom: 5px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: var(--text-secondary);
+}
+
+.welcome {
+    text-align: right;
+}
+
+.welcome h2 {
+    margin-bottom: 5px;
+}
+
+.dashboard-section {
+    background-color: var(--surface);
+
+    margin-top: 25px;
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow);
+}
+
+.dashboard-section h2 {
+    margin-bottom: 20px;
+}
+
+.dashboard-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.dashboard-columns .dashboard-section {
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+textarea {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    resize: vertical;
+
+    background-color: var(--bg-secondary);
+    color: var(--text);
+
+    font-size: 16px;
+}
+
+textarea::placeholder,
+input::placeholder {
+    color: var(--text-muted);
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--blue);
+
+    box-shadow: 0 0 0 3px rgba(77, 166, 255, 0.12);
+}
+
+.dashboard-section button {
+    margin-top: 10px;
+
+    background-color: var(--blue);
+    color: white;
+
+    border-color: var(--blue);
+}
+
+.dashboard-section button:hover {
+    background-color: var(--blue-dark);
+}
+
+
+/* =========================================================
+   POSTS
+========================================================= */
+
+#postsContainer {
+    margin-top: 10px;
+}
+
+.post {
+    display: flex;
+    gap: 15px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.post:first-child {
+    padding-top: 5px;
+}
+
+.post:last-child {
+    border-bottom: none;
+}
+
+.post-profile-picture {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    min-height: 45px;
+
+    border-radius: 50%;
+
+    background-color: var(--blue);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.post-profile-picture img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+
+    border-radius: 50%;
+}
+
+.post-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+.post-header h4 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.post-header small {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.post-content {
+    margin: 0;
+    line-height: 1.6;
+
+    word-wrap: break-word;
+}
+
+
+/* =========================================================
+   POSTS PAGE
+========================================================= */
+
+.posts-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.posts-title,
+.all-posts {
+    background-color: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow);
+}
+
+.posts-title {
+    padding: 30px;
+    margin-bottom: 25px;
+}
+
+.posts-title h2 {
+    margin-bottom: 8px;
+}
+
+.all-posts {
+    padding: 25px;
+}
+
+.full-post {
+    display: flex;
+    gap: 15px;
+
+    padding: 25px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.full-post:first-child {
+    padding-top: 5px;
+}
+
+.full-post:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   POST ACTIONS
+========================================================= */
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.like-button,
+.reply-button {
+    background-color: transparent;
+    border: none;
+
+    padding: 5px 8px;
+
+    font-size: 14px;
+}
+
+.like-button {
+    color: #ff5c6c;
+}
+
+.reply-button {
+    color: var(--blue);
+}
+
+.like-button:hover,
+.reply-button:hover {
+    background-color: transparent;
+    opacity: 0.7;
+}
+
+.reply-area {
+    margin-top: 15px;
+}
+
+.reply-area textarea {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.replies-container {
+    margin-top: 15px;
+}
+
+.reply {
+    display: flex;
+    gap: 10px;
+
+    background-color: var(--bg-secondary);
+
+    padding: 12px;
+    margin-top: 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.reply-profile-picture {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    min-height: 35px;
+
+    border-radius: 50%;
+
+    background-color: var(--blue);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.reply-profile-picture img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+
+    border-radius: 50%;
+}
+
+.reply p {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   LEADERBOARDS
+========================================================= */
+
+.leaderboards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.leaderboard {
+    background-color: var(--surface);
+
+    padding: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow);
+}
+
+.leaderboard h2 {
+    margin-bottom: 15px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.leaderboard-item:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-item span {
+    display: block;
+}
+
+.leaderboard-profile-picture {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    min-height: 35px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+    flex-shrink: 0;
+
+    background-color: var(--blue);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leaderboard-profile-picture img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   AUTH PAGE
+========================================================= */
+
+.auth-container {
+    min-height: 75vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 40px;
+
+    padding: 60px 30px;
+}
+
+.auth-box {
+    background-color: var(--surface);
+
+    padding: 40px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    width: 700px;
+
+    box-shadow: var(--shadow-large);
+}
+
+.auth-box > h2 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.auth-forms {
+    display: flex;
+    gap: 25px;
+}
+
+.auth-card {
+    flex: 1;
+}
+
+.auth-card h3 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.auth-card input {
+    width: 100%;
+
+    padding: 12px;
+    margin-bottom: 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    background-color: var(--bg-secondary);
+    color: var(--text);
+
+    font-size: 15px;
+}
+
+.auth-card input:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+
+.auth-card button {
+    width: 100%;
+
+    background-color: var(--blue);
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    padding: 12px;
+
+    font-size: 16px;
+}
+
+.auth-card button:hover {
+    background-color: var(--blue-dark);
+}
+
+#loginMessage,
+#signupMessage {
+    margin-top: 15px;
+    min-height: 20px;
+}
+
+.welcome-panel {
+    width: 300px;
+
+    padding: 35px;
+
+    background-color: var(--header);
+    color: white;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-large);
+}
+
+.welcome-panel h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.welcome-panel p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD
+========================================================= */
+
+.admin-container {
+    max-width: 1100px;
+
+    margin: 0 auto;
+    padding: 50px 25px;
+}
+
+.admin-container h2 {
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.admin-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 35px;
+}
+
+.admin-section {
+    background-color: var(--surface);
+
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    margin-bottom: 30px;
+
+    box-shadow: var(--shadow);
+}
+
+.admin-section h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.admin-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-user:last-child {
+    border-bottom: none;
+}
+
+.admin-user p {
+    margin-top: 5px;
+    color: var(--text-muted);
+}
+
+.admin-user-stats {
+    display: flex;
+    gap: 25px;
+    color: var(--text-secondary);
+}
+
+.admin-post {
+    padding: 20px;
+    margin-bottom: 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background-color: var(--bg-secondary);
+}
+
+.admin-post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.admin-post-content {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.admin-post small {
+    color: var(--text-muted);
+}
+
+.delete-post-button {
+    margin-top: 15px;
+
+    background-color: var(--danger);
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    padding: 9px 15px;
+}
+
+.delete-post-button:hover {
+    background-color: var(--danger-dark);
+}
+
+
+/* =========================================================
+   PROFILE PICTURES
+========================================================= */
+
+.large-profile-picture {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--blue);
+    color: white;
+
+    font-size: 48px;
+    font-weight: bold;
+
+    flex-shrink: 0;
+}
+
+.large-profile-picture img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+
+    border-radius: 50%;
+}
+
+#profilePicture {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+#profilePicture img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    display: block;
+}
+
+
+/* =========================================================
+   ATTENDANCE PAGE
+========================================================= */
+
+.attendance-container {
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 50px 25px;
+}
+
+.attendance-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.attendance-page-header h2 {
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.attendance-page-header p {
+    color: var(--text-muted);
+}
+
+.attendance-date-box {
+    background-color: var(--surface);
+
+    padding: 15px 22px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    text-align: right;
+
+    box-shadow: var(--shadow);
+}
+
+.attendance-date-box span {
+    display: block;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.attendance-date-box strong {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   ATTENDANCE SECTIONS
+========================================================= */
+
+.attendance-section {
+    background-color: var(--surface);
+
+    padding: 30px;
+    margin-bottom: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow);
+}
+
+.attendance-section h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 22px;
+}
+
+.section-header h3 {
+    margin-bottom: 6px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ATTENDANCE FORMS
+========================================================= */
+
+.student-form,
+.attendance-form {
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr auto;
+
+    gap: 15px;
+
+    align-items: end;
+}
+
+.attendance-form {
+    grid-template-columns: 2fr 1fr auto;
+}
+
+#studentForm {
+    display: grid;
+
+    grid-template-columns: 1fr 2fr auto;
+
+    gap: 12px;
+}
+
+#attendanceForm {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr auto;
+
+    gap: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select,
+#studentForm input,
+#attendanceForm select {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background-color: var(--bg-secondary);
+    color: var(--text);
+
+    font-size: 15px;
+}
+
+#attendanceForm select {
+    background-color: var(--bg-secondary);
+}
+
+#studentForm input:focus,
+#attendanceForm select:focus {
+    outline: none;
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(77, 166, 255, 0.12);
+}
+
+.primary-button,
+#studentForm button,
+#attendanceForm button {
+    background-color: var(--blue);
+    color: white;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.primary-button:hover,
+#studentForm button:hover,
+#attendanceForm button:hover {
+    background-color: var(--blue-dark);
+}
+
+
+/* =========================================================
+   STUDENT COUNT
+========================================================= */
+
+.student-count {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    background-color: var(--blue-light);
+    color: var(--blue);
+
+    padding: 7px 13px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.student-count span {
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   STUDENT LIST
+========================================================= */
+
+#studentsContainer {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+.attendance-student {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 18px 20px;
+
+    background-color: var(--bg-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.attendance-student:hover {
+    transform: translateY(-1px);
+
+    border-color: #4b6380;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    min-width: 0;
+}
+
+.student-info strong {
+    display: block;
+
+    color: var(--text);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.student-info strong::before {
+    content: "STUDENT NAME";
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    color: var(--text-muted);
+}
+
+.student-info span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    margin-top: 6px;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.student-info span::before {
+    content: "STUDENT ID";
+
+    display: inline-block;
+
+    margin-right: 4px;
+
+    padding: 3px 7px;
+
+    background-color: var(--blue-light);
+    color: var(--blue);
+
+    border-radius: 5px;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   DELETE STUDENT
+========================================================= */
+
+.delete-student-button {
+    flex-shrink: 0;
+
+    margin-left: 25px;
+
+    padding: 9px 15px;
+
+    background-color: var(--danger-bg);
+    color: #f87171;
+
+    border: 1px solid #7f1d1d;
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.delete-student-button::before {
+    content: "×";
+
+    font-size: 18px;
+    line-height: 12px;
+
+    font-weight: 400;
+}
+
+.delete-student-button:hover {
+    background-color: var(--danger-dark);
+    color: white;
+
+    border-color: var(--danger-dark);
+
+    transform: translateY(-1px);
+}
+
+.delete-student-button:active {
+    transform: translateY(0);
+}
+
+.delete-student-button:disabled {
+    background-color: #2a1717;
+    color: #f87171;
+
+    border-color: #5f2222;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   ATTENDANCE SEARCH
+========================================================= */
+
+.attendance-search {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 12px;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    padding: 18px;
+
+    background-color: var(--bg-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.attendance-search label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: var(--text-secondary);
+}
+
+.attendance-search input[type="date"] {
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background-color: var(--surface);
+    color: var(--text);
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.attendance-search input[type="date"]:focus {
+    outline: none;
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(77, 166, 255, 0.15);
+}
+
+#searchAttendanceButton {
+    height: 42px;
+
+    padding: 0 18px;
+
+    background-color: var(--blue);
+    color: white;
+
+    border: none;
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#searchAttendanceButton:hover {
+    background-color: var(--blue-dark);
+}
+
+#showAllAttendanceButton {
+    height: 42px;
+
+    padding: 0 18px;
+
+    background-color: var(--surface);
+    color: var(--text-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#showAllAttendanceButton:hover {
+    background-color: var(--surface-hover);
+}
+
+
+/* =========================================================
+   ATTENDANCE TABLE
+========================================================= */
+
+.attendance-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    margin-top: 20px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background-color: var(--surface);
+}
+
+.attendance-table {
+    width: 100%;
+
+    min-width: 650px;
+
+    border-collapse: collapse;
+
+    background-color: var(--surface);
+}
+
+.attendance-table thead {
+    background-color: #111827;
+    color: var(--text-secondary);
+}
+
+.attendance-table th {
+    padding: 15px 18px;
+
+    text-align: left;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: var(--text-secondary);
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.attendance-table td {
+    padding: 16px 18px;
+
+    font-size: 15px;
+
+    color: var(--text-secondary);
+
+    border-bottom: 1px solid #273449;
+}
+
+.attendance-table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.attendance-table tbody tr:hover {
+    background-color: #243247;
+}
+
+.attendance-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.attendance-table td:first-child {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.attendance-table td:nth-child(2) {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.attendance-student-id {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.attendance-student-name {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.attendance-date {
+    color: var(--text-secondary);
+}
+
+.attendance-time {
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   ATTENDANCE STATUS
+========================================================= */
+
+.attendance-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.attendance-status.present {
+    background-color: var(--success-bg);
+    color: #4ade80;
+}
+
+.attendance-status.late {
+    background-color: var(--warning-bg);
+    color: #fbbf24;
+}
+
+.attendance-status.absent {
+    background-color: var(--danger-bg);
+    color: #f87171;
+}
+
+
+/* =========================================================
+   EMPTY STATES / MESSAGES
+========================================================= */
+
+#studentsContainer > p,
+#attendanceHistoryContainer > p,
+.attendance-empty {
+    padding: 30px;
+
+    text-align: center;
+
+    color: var(--text-muted);
+
+    background-color: var(--bg-secondary);
+
+    border: 1px dashed var(--border);
+
+    border-radius: 10px;
+}
+
+.error-message {
+    color: #f87171;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .auth-container {
+        flex-direction: column;
+    }
+
+    .auth-box {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .welcome-panel {
+        width: 100%;
+        max-width: 700px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .dashboard-columns {
+        grid-template-columns: 1fr;
+    }
+
+    #studentForm,
+    #attendanceForm,
+    .student-form,
+    .attendance-form {
+        grid-template-columns: 1fr;
+    }
+
+    .attendance-section {
+        padding: 20px;
+    }
+
+    .attendance-container {
+        padding: 30px 15px;
+    }
+
+    .attendance-container > h2,
+    .attendance-page-header h2 {
+        font-size: 28px;
+    }
+
+    .attendance-page-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .attendance-date-box {
+        text-align: left;
+    }
+
+    .section-header {
+        align-items: flex-start;
+
+        gap: 15px;
+
+        flex-direction: column;
+    }
+
+    .attendance-search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .attendance-search input[type="date"],
+    #searchAttendanceButton,
+    #showAllAttendanceButton {
+        width: 100%;
+    }
+
+    .attendance-student {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .admin-user {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .admin-user-stats {
+        gap: 15px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 15px 20px;
+    }
+
+    .nav-left,
+    #mainNav,
+    #userNavigation {
+        gap: 15px;
+    }
+
+    .leaderboards {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-forms {
+        flex-direction: column;
+    }
+
+    .attendance-table {
+        min-width: 600px;
+    }
+
+    .attendance-student {
+        flex-direction: row;
+    }
+
+    .delete-student-button {
+        margin-left: 10px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .auth-box {
+        padding: 25px;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .attendance-student {
+        align-items: flex-start;
+    }
+
+    .student-info {
+        flex: 1;
+    }
+
+    .delete-student-button {
+        flex-shrink: 0;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    header {
+        padding: 15px;
+    }
+
+    .nav-left {
+        gap: 10px;
+    }
+
+    #userNavigation {
+        gap: 10px;
+    }
+
+    #logoutButton {
+        padding: 8px 12px;
+    }
+
+    .attendance-student {
+        flex-direction: column;
+    }
+
+    .delete-student-button {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 3px;
+    }
+
+    .post {
+        gap: 10px;
+    }
+}
+/* =========================================================
+   FORUM 3-COLUMN LAYOUT & SIDEBARS
+========================================================= */
+
+.forum-layout {
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 280px 1fr 280px; /* Left Sidebar, Center Feed, Right Sidebar */
+    gap: 25px;
+    align-items: start;
+}
+
+.forum-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.leaderboard-sidebar .leaderboard {
+    position: sticky;
+    top: 20px;
+}
+
+.create-post-box {
+    margin-top: 0;
+    background-color: var(--surface);
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow);
+}
+
+.create-post-box button[type="submit"] {
+    margin-top: 10px;
+    background-color: var(--blue);
+    color: white;
+    border: 1px solid var(--blue);
+}
+
+.create-post-box button[type="submit"]:hover {
+    background-color: var(--blue-dark);
+}
+
+/* RESPONSIVE LAYOUT FOR SMALLER SCREENS */
+@media (max-width: 1100px) {
+    .forum-layout {
+        grid-template-columns: 1fr; /* Stack everything in 1 column on tablet/mobile */
+    }
+    
+    .leaderboard-sidebar .leaderboard {
+        position: static;
+    }
+}

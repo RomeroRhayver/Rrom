@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RRom - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-brand-group">
+        <h1>RRom</h1>
+        <a href="index.html" class="home-link">Home</a>
+    </div>
+
+    <div class="header-right-group">
+        <div class="nav-dropdown">
+            <button class="dropdown-trigger">Menu ▾</button>
+            <div id="mainNav" class="dropdown-content">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="profile.html">Profile</a>
+                <a href="posts.html">Forum</a>
+                <a href="admin.html">Admin Panel</a>
+            </div>
+        </div>
+
+        <button id="logoutButton">Logout</button>
+    </div>
+</header>
+
+
+
+<main class="dashboard">
+
+    <!-- PROFILE HEADER -->
+
+    <section class="profile-header">
+
+        <div class="profile-picture" id="profilePicture">
+            ?
+        </div>
+
+        <div class="profile-info">
+
+            <h2 id="profileUsername">
+                Loading...
+            </h2>
+
+            <p id="profileEmail">
+                Loading...
+            </p>
+
+            <p>
+                <strong id="postCount">0</strong>
+                Posts
+            </p>
+
+        </div>
+
+
+        <div class="welcome">
+
+            <h2 id="welcomeText">
+                Welcome!
+            </h2>
+
+            <p>
+                Good to see you again.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT ME -->
+
+    <section class="dashboard-section about-me">
+
+        <div class="section-header">
+
+            <h2>About Me</h2>
+            
+            <button
+                type="button"
+                id="editProfileButton"
+            >
+            <a href="profile.html">Edit Profile</a>
+            </button>
+
+        </div>
+
+
+        <p id="profileBio">
+            No About Me yet.
+        </p>
+
+
+        <!-- EDIT PROFILE -->
+
+        <div
+            id="editProfileSection"
+            style="display: none;"
+        >
+
+            <h3>Edit Profile</h3>
+
+
+            <label for="displayNameInput">
+                Display Name
+            </label>
+
+            <input
+                type="text"
+                id="displayNameInput"
+                maxlength="30"
+                placeholder="Enter your display name"
+            >
+
+
+            <label for="bioInput">
+                About Me
+            </label>
+
+            <textarea
+                id="bioInput"
+                maxlength="300"
+                rows="5"
+                placeholder="Tell people about yourself..."
+            ></textarea>
+
+
+            <div class="profile-edit-buttons">
+
+                <button
+                    type="button"
+                    id="saveProfileButton"
+                >
+                    Save Changes
+                </button>
+
+
+                <button
+                    type="button"
+                    id="cancelProfileButton"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+
+            <p id="profileMessage"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CREATE POST + POSTS -->
+
+    <div class="dashboard-columns">
+
+
+        <!-- CREATE POST -->
+
+        <section class="dashboard-section">
+
+            <h2>Create a Post</h2>
+
+            <form id="postForm">
+
+                <textarea
+                    id="postContent"
+                    placeholder="What's on your mind?"
+                    rows="5"
+                    required
+                ></textarea>
+
+
+                <button type="submit">
+                    Post
+                </button>
+
+            </form>
+
+
+            <p id="postMessage"></p>
+
+        </section>
+
+
+        <!-- POSTS -->
+
+        <section class="dashboard-section">
+
+            <h2>Posts</h2>
+
+            <div id="postsContainer">
+                Loading posts...
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 RRom
+    </p>
+
+</footer>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

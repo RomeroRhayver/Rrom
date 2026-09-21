@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RRom - Login / Sign Up</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>RRom</h1>
+
+    <nav>
+        <span style="margin:10px 20px "><a href="index.html">Home</a>
+    </nav>
+</header>
+
+
+<main>
+
+    <section class="auth-container">
+
+        <!-- LOGIN / SIGN UP -->
+        <div class="auth-box">
+
+            <h2>Welcome</h2>
+            <p class="auth-subtitle">Login or create your RRom account.</p>
+
+
+            <div class="auth-forms">
+
+                <!-- LOGIN -->
+                <div class="auth-card">
+
+                    <h3>Login</h3>
+
+                    <form id="loginForm">
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Email"
+                            required
+                        >
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Password"
+                            required
+                        >
+
+                        <button type="submit">
+                            Login
+                        </button>
+
+                    </form>
+
+                    <p id="loginMessage"></p>
+
+                </div>
+
+
+                <!-- SIGN UP -->
+                <div class="auth-card">
+
+                    <h3>Sign Up</h3>
+
+                    <form id="signupForm">
+
+                        <input
+                            type="text"
+                            id="signupUsername"
+                            placeholder="Username"
+                            required
+                        >
+
+                        <input
+                            type="email"
+                            id="signupEmail"
+                            placeholder="Email"
+                            required
+                        >
+
+                        <input
+                            type="password"
+                            id="signupPassword"
+                            placeholder="Password"
+                            required
+                        >
+
+                        <button type="submit">
+                            Create Account
+                        </button>
+
+                    </form>
+
+                    <p id="signupMessage"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- WELCOME PANEL -->
+        <aside class="welcome-panel">
+
+            <h2>Welcome to RRom</h2>
+
+            <p>
+                A project about posting sharing and stuff
+                i dont know i ran out of ideas
+            </p>
+
+            <p>
+                Create an account to start posting and
+                joining the community.
+            </p>
+
+        </aside>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>© 2026 RRom</p>
+</footer>
+
+
+<script src="auth.js"></script>
+
+</body>
+</html>

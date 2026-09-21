@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RRom - Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-brand-group">
+        <h1>RRom</h1>
+        <a href="index.html" class="home-link">Home</a>
+    </div>
+
+    <div class="header-right-group">
+        <div class="nav-dropdown">
+            <button class="dropdown-trigger">Menu ▾</button>
+            <div id="mainNav" class="dropdown-content">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="profile.html">Profile</a>
+                <a href="posts.html">Forum</a>
+                <a href="admin.html">Admin Panel</a>
+            </div>
+        </div>
+
+        <button id="logoutButton">Logout</button>
+    </div>
+</header>
+
+
+<main class="profile-page" >
+
+    <!-- PROFILE CARD -->
+    <section class="profile-card" style="margin: 20px 15px">
+
+        <div class="large-profile-picture" id="profilePicture">
+            ?
+        </div>
+
+        <h2 id="profileDisplayName">
+            Loading...
+        </h2>
+
+        <p id="profileUsername">
+            @loading
+        </p>
+
+        <p id="profileEmail">
+            Loading...
+        </p>
+
+        <div class="profile-stats">
+
+            <div>
+                <strong id="postCount">0</strong>
+                <span>Posts</span>
+            </div>
+
+            <div>
+                <strong id="likesCount">0</strong>
+                <span>Likes</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT ME -->
+    <section class="dashboard-section">
+
+        <div class="section-header">
+
+            <h2>About Me</h2>
+
+            <button id="editProfileButton">
+                Edit Profile
+            </button>
+
+        </div>
+
+        <p id="profileBio">
+            No About Me yet.
+        </p>
+
+
+        <!-- EDIT PROFILE -->
+        <div id="editProfileSection" style="display: none;">
+
+            <h3>Edit Profile</h3>
+
+
+            <!-- DISPLAY NAME -->
+            <label for="displayNameInput">
+                Display Name
+            </label>
+
+            <input
+                type="text"
+                id="displayNameInput"
+                maxlength="30"
+                placeholder="Your display name"
+            >
+
+
+            <br><br>
+
+
+            <!-- PROFILE PICTURE -->
+            <label for="profilePictureInput">
+                Profile Picture URL
+            </label>
+
+            <input
+                type="url"
+                id="profilePictureInput"
+                placeholder="Paste an image URL"
+            >
+
+            <small>
+                Paste a direct link to an image.
+            </small>
+
+
+            <br><br>
+
+
+            <!-- ABOUT ME -->
+            <label for="bioInput">
+                About Me
+            </label>
+
+            <textarea
+                id="bioInput"
+                maxlength="300"
+                rows="6"
+                placeholder="Tell people about yourself..."
+            ></textarea>
+
+
+            <br><br>
+
+
+            <!-- BUTTONS -->
+            <button id="saveProfileButton">
+                Save Changes
+            </button>
+
+            <button id="cancelProfileButton">
+                Cancel
+            </button>
+
+
+            <p id="profileMessage"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>© 2026 RRom</p>
+</footer>
+
+
+<script src="profile.js"></script>
+
+</body>
+</html>

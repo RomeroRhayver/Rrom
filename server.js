@@ -1,9 +1,21 @@
-const express = require("express");
-const Database = require("better-sqlite3");
-const bcrypt = require("bcrypt");
-const session = require("express-session");
-
+const express = require('express');
 const app = express();
+const path = require('path');
+const PORT = process.env.PORT || 3000;
+
+// 1. Tell Express where to find your static assets (CSS, JS, Images)
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 2. Handle the homepage route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html')); 
+    // Adjust 'public' and 'index.html' to match your actual folder structure
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
 const PORT = 3000;
 
 const ADMIN_EMAIL = "newadminr@test.com";

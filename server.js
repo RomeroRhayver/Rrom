@@ -2,18 +2,58 @@ const express = require("express");
 const Database = require("better-sqlite3");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
+const path = require("path"); // 👈 Add this at the top to handle file paths
 
 const app = express();
 
-const PORT = 3000;
+// 🔴 CRITICAL FOR RENDER: Use process.env.PORT because Render assigns its own port
+const PORT = process.env.PORT || 3000; 
 
 const ADMIN_EMAIL = "newadminr@test.com";
 
 // ============================================================
 // DATABASE
 // ============================================================
-
 const db = new Database("users.db");
+
+// ============================================================
+// MIDDLEWARE & STATIC FILES
+// ============================================================
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Tell Express to serve your HTML/CSS/JS files from a folder named "public"
+app.use(express.static(path.join(__dirname, "public"))); 
+
+// Session setup (add your secret key here)
+app.use(session({
+    secret: 'your-very-secure-secret-key',
+    resave: false,
+    saveUninitialized: false
+}));
+
+// ============================================================
+// ROUTES
+// ============================================================
+
+// 👈 This fixes the "Cannot GET /" error!
+app.get("/", (req, res) => {
+    // If your index.html is inside a "public" folder:
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+    
+    // NOTE: If your index.html is in the main root folder instead, use this line:
+    // res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// ... Put your login, register, and other API routes here ...
+
+// ============================================================
+// START SERVER
+// ============================================================
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
 
 
 // ============================================================
